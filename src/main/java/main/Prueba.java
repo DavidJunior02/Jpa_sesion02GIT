@@ -18,13 +18,16 @@ public class Prueba {
 		EntityManager em = fabrica.createEntityManager();
 		
 		
-		Query query=em.createNativeQuery("{call findall_usuarios()}",TbUsuario.class);
-		List<TbUsuario> tabusu=query.getResultList();
-				
+		Query query=em.createNativeQuery("{call usp_validaAcceso(?,?)}",TbUsuario.class);
+		query.setParameter(1, "U001@gmail.com");
+		query.setParameter(2, "10001");
+		TbUsuario u=(TbUsuario)query.getSingleResult();
+		if(u==null){
+			
+			System.out.println("El usuario no existe");
+		}else{
+			System.out.println("Bienvenido"+u.getNomUsua());
+		}
 		
-		System.out.println("===JAVA LIST====");
-		System.out.println("=====================================");
-		System.out.println("Numero de Usuarios: " + tabusu.size());
-		System.out.println("=====================================");
 	}
 }
