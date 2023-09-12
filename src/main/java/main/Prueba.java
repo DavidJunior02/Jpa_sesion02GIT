@@ -26,7 +26,7 @@ public class Prueba {
 			
 			System.out.println("El usuario no existe");
 		}else{
-			System.out.println("Bienvenido"+u.getNomUsua());
+			System.out.println("Bienvenido"+u.getNomUsua()+""+u.getApeUsua());
 		}
 		
 	}
